@@ -40,10 +40,6 @@ def encode(code):
   output += str(count) + prev
   return output
 
-def count(code):
-  r = [(l, sum(1 for _ in g)) for l, g in itertools.groupby(code)]
-  return r
-    
 
 if __name__ == "__main__":
   print(sys.argv[1])
