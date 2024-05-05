@@ -46,7 +46,9 @@ def encode(code):
   return output
 
 def rleReader(file):
-  return
+  with open(file, 'r') as rleFile:
+    lines = rleFile.readlines
+    return lines, 3
 
 
 if __name__ == "__main__":

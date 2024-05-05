@@ -49,7 +49,7 @@ class TestEndoding:
     assert encoded == '2o\n2b'
 
 class TestRLEReader:
-  def test_returns_x_and_Y():
-    x, y = rleReader('./testpattern.rle')
+  def test_returns_x_and_Y(self):
+    x, y = rleReader("testpattern.rle")
     assert x == 3
     assert y == 3
