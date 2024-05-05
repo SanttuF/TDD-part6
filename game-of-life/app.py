@@ -46,15 +46,26 @@ def encode(code):
   return output
 
 def rleReader(file):
+  x, y = 0,0
+  pattern = ''
+  f = False
   with open(file, 'r') as rleFile:
     for line in rleFile:
       if (line[0] == '#'):
         continue
-      xi = line.find('x') + 4
-      yi = line.find('y') + 4
-      x = int(line[xi])
-      y = int(line[yi])
-      return (x, y)
+
+      if(not f):
+        xi = line.find('x') + 4
+        yi = line.find('y') + 4
+        x = int(line[xi])
+        y = int(line[yi])
+        f = True
+        continue
+
+      pattern = line[:-1]
+  return (x, y, pattern)
+
+      
 
 
 
