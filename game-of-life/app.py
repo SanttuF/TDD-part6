@@ -13,6 +13,9 @@ class Board:
       if len(current) < self.x:
         split[i] += 'b' * (self.x - len(current))
 
+    while(len(split) < self.y):
+      split.append('b'*self.x)
+
     return split
 
 def decode(code):
