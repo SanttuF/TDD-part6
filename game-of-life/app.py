@@ -1,4 +1,5 @@
 import sys
+import itertools
 
 class Board:
   def __init__(self, x=0, y=0):
@@ -37,7 +38,8 @@ def encode(code):
   return output
 
 def count(code):
-  return
+  r = [(l, sum(1 for _ in g)) for l, g in itertools.groupby(code)]
+  return r
     
 
 if __name__ == "__main__":

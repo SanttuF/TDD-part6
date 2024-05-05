@@ -28,7 +28,7 @@ class TestDecoding:
     assert decoded == 'oo\nbb'
 
 class TestEndoding:
-  def test_counting():
+  def test_counting(self):
     r = count('aabbbc')
     assert r == [('a', 2), ('b', 3), ('c', 1)]
     
