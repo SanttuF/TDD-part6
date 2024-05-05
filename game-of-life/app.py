@@ -47,8 +47,15 @@ def encode(code):
 
 def rleReader(file):
   with open(file, 'r') as rleFile:
-    lines = rleFile.readlines
-    return lines, 3
+    for line in rleFile:
+      if (line[0] == '#'):
+        continue
+      xi = line.find('x') + 4
+      yi = line.find('y') + 4
+      x = int(line[xi])
+      y = int(line[yi])
+      return (x, y)
+
 
 
 if __name__ == "__main__":
