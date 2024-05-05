@@ -1,10 +1,10 @@
 import sys
 
 class Board:
-  def __init__(self, x=0, y=0):
+  def __init__(self, x=0, y=0, pattern = ''):
     self.x = x
     self.y = y
-    self.board = ['b'*x for _ in range(y)]
+    self.board = self.setPattern(pattern)
 
   def setPattern(self, pattern):
     split = pattern.split('$')
