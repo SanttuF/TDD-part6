@@ -16,12 +16,13 @@ class TestBoard:
     assert len(board.board) == 5
     assert len(board.board[0]) == 4
 
-def testDecoding():
-  encoded = '2o2b'
-  decoded = decode(encoded)
-  assert decoded == 'oobb'
+class TestDecoding:
+  def testDecoding(self):
+    encoded = '2o2b'
+    decoded = decode(encoded)
+    assert decoded == 'oobb'
 
-def testDecodingLinechange():
-  encoded = '2o$2b'
-  decoded = decode(encoded)
-  assert decoded == 'oo\nbb'
+  def testDecodingLinechange(self):
+    encoded = '2o$2b'
+    decoded = decode(encoded)
+    assert decoded == 'oo\nbb'
