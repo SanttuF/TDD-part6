@@ -26,13 +26,13 @@ def encode(code):
 
   output = ''
   count = 1
-  prev = code[0]
-  for i in code[1:]:
+  prev = ''
+  for i in code:
     if(i == prev):
       count += 1
       continue
     if count == 1:
-      output += + prev  
+      output += prev  
     else:
       output += str(count) + prev
     count = 1
@@ -42,4 +42,5 @@ def encode(code):
 
 
 if __name__ == "__main__":
-  print(sys.argv[1])
+  # print(sys.argv[1])
+  encode('oooo')

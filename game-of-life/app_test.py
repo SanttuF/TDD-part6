@@ -37,3 +37,8 @@ class TestEndoding:
     string = 'o'
     encoded = encode(string)
     assert encoded == 'o'
+
+  def test_multiple_letters_Encode(self):
+    string = 'ooooboo'
+    encoded = encode(string)
+    assert encoded == '4ob2o'
