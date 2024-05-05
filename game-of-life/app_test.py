@@ -50,7 +50,7 @@ class TestDecoding:
   def test_Decoding_Linechange(self):
     encoded = '2o$2b'
     decoded = RLEFileHandler.decode(encoded)
-    assert decoded == 'oo\nbb'
+    assert decoded == 'oo$bb'
 
 class TestEndoding:
   def test_Simple_Encode(self):
@@ -71,7 +71,7 @@ class TestEndoding:
   def test_linechange_Encode(self):
     string = 'oo$bb'
     encoded = RLEFileHandler.encode(string)
-    assert encoded == '2o\n2b'
+    assert encoded == '2o$2b'
 
 class TestRLEReader:
   def test_returns_x_and_Y(self):

@@ -30,7 +30,7 @@ class RLEFileHandler:
     num = 1
     for i in code:
       if (i == '$'):
-        output += '\n'
+        output += '$'
       elif(i.isnumeric()):
         num = int(i)
       else:
@@ -56,7 +56,7 @@ class RLEFileHandler:
       count = 1
 
       if(i == '$'):
-        output += '\n'
+        output += '$'
         prev = ''
 
     if count == 1: output += prev  
@@ -89,7 +89,11 @@ class RLEFileHandler:
 if __name__ == "__main__":
   file = sys.argv[1]
   (x, y, pattern) = RLEFileHandler.rleReader(file)
+  # print('file', pattern, x, y)
   decoded = RLEFileHandler.decode(pattern)
-  board = Board(x, y, pattern)
+  # print('decode', decoded)
+  board = Board(x, y, decoded)
+  # print(str(board))
   encoded = RLEFileHandler.encode(str(board))
+  # print('encode', encoded)
   print(encoded)
