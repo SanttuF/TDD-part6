@@ -19,6 +19,19 @@ def decode(code):
       num = 1
   return output
 
+def encode(code):
+  output = ''
+  count = ''
+  prev = ''
+  for i in code:
+    if(i == prev):
+      count += 1
+      continue
+    output += count + prev
+    count = ''
+  output += count + prev
+  return output
+    
 
 if __name__ == "__main__":
   print(sys.argv[1])

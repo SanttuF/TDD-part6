@@ -1,4 +1,4 @@
-from app import Board, decode
+from app import Board, decode, encode
 
 class TestBoard:
   def test_Board_exists(self):
@@ -26,3 +26,9 @@ class TestDecoding:
     encoded = '2o$2b'
     decoded = decode(encoded)
     assert decoded == 'oo\nbb'
+
+class testEndoding:
+  def testSimpleEncode(self):
+    string = 'oo'
+    encoded = encode(string)
+    assert encoded == '2o'
