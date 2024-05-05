@@ -43,7 +43,7 @@ class TestEndoding:
     encoded = encode(string)
     assert encoded == '4ob2o'
 
-  def test_linechange(self):
+  def test_linechange_Encode(self):
     string = 'oo$bb'
     encoded = encode(string)
     assert encoded == '2o\n2b'

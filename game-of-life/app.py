@@ -1,5 +1,4 @@
 import sys
-import itertools
 
 class Board:
   def __init__(self, x=0, y=0):
@@ -25,6 +24,7 @@ def encode(code):
   output = ''
   count = 1
   prev = ''
+
   for i in code:
     if(i == prev):
       count += 1
@@ -47,5 +47,5 @@ def encode(code):
 
 
 if __name__ == "__main__":
-  print(encode('oo$bb'))
-  # print(sys.argv[1])
+  # print(encode('oo$bb'))
+  print(sys.argv[1])
