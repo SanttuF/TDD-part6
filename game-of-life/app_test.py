@@ -15,6 +15,11 @@ class TestBoard:
     assert board.board is not None
     assert len(board.board) == 5
     assert len(board.board[0]) == 4
+  
+  def test_Board_pattern_parse(self):
+    board = Board()
+    pattern = board.setPattern('oo')
+    assert pattern == ['oo']
 
 class TestDecoding:
   def test_Decoding(self):
