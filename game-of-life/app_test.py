@@ -21,6 +21,11 @@ class TestBoard:
     pattern = board.setPattern('oo')
     assert pattern == ['oo']
 
+  def test_Board_pattern_parse_newLine(self):
+    board = Board()
+    pattern = board.setPattern('o$o')
+    assert pattern == ['o', 'o']
+
 class TestDecoding:
   def test_Decoding(self):
     encoded = '2o2b'
