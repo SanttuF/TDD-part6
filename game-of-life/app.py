@@ -25,13 +25,16 @@ def encode(code):
     return code
 
   output = ''
-  count = 0
+  count = 1
   prev = code[0]
   for i in code[1:]:
     if(i == prev):
       count += 1
       continue
-    output += str(count) + prev
+    if count == 1:
+      output += + prev  
+    else:
+      output += str(count) + prev
     count = 1
     prev = i
   output += str(count) + prev
