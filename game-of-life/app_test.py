@@ -6,5 +6,6 @@ def test_Board_exists():
 
 def test_Board_has_size():
   board = Board(1, 2)
+  print(board.x)
   assert board.x == 1
   assert board.y == 2
