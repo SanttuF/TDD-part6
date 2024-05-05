@@ -31,15 +31,24 @@ def encode(code):
     if(i == prev):
       count += 1
       continue
+
     if count == 1:
       output += prev  
     else:
       output += str(count) + prev
+
+    if(i == '$'):
+      output += '\n'
+      prev = ''
+    else:
+      prev = i
+
     count = 1
-    prev = i
+
   output += str(count) + prev
   return output
 
 
 if __name__ == "__main__":
-  print(sys.argv[1])
+  print(encode('oo$bb'))
+  # print(sys.argv[1])
