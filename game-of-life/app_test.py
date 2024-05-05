@@ -50,6 +50,10 @@ class TestEndoding:
 
 class TestRLEReader:
   def test_returns_x_and_Y(self):
-    x, y = rleReader("testpattern.rle")
+    x, y, _ = rleReader("testpattern.rle")
     assert x == 3
     assert y == 3
+
+  def test_returns_pattern(self):
+    _, _, pattern = rleReader("testpattern.rle")
+    assert pattern == 'b2o$2ob$bo'
