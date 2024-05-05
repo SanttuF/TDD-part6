@@ -36,6 +36,11 @@ class TestBoard:
     pattern = pattern = board.setPattern('o$o')
     assert pattern == ['o','o','b']
 
+  def test_Board_toString(self):
+    board = Board(2, 2, 'oo$oo')
+    string = board.toString()
+    assert string == 'oo$oo'
+
 class TestDecoding:
   decode = RLEFileHandler.decode
 
