@@ -21,8 +21,6 @@ def decode(code):
   return output
 
 def encode(code):
-  if(len(code)) < 2:
-    return code
 
   output = ''
   count = 1
@@ -32,10 +30,8 @@ def encode(code):
       count += 1
       continue
 
-    if count == 1:
-      output += prev  
-    else:
-      output += str(count) + prev
+    if count == 1: output += prev  
+    else:          output += str(count) + prev
 
     if(i == '$'):
       output += '\n'
@@ -45,7 +41,9 @@ def encode(code):
 
     count = 1
 
-  output += str(count) + prev
+  if count == 1: output += prev  
+  else:          output += str(count) + prev
+
   return output
 
 
