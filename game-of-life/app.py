@@ -6,8 +6,8 @@ class Board:
     self.y = y
     self.board = ['b'*x for _ in range(y)]
 
-  def setPattern(pattern):
-    return
+  def setPattern(self, pattern):
+    return [pattern]
 
 def decode(code):
   output = ''
