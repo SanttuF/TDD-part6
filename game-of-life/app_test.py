@@ -1,4 +1,4 @@
-from app import Board, decode, encode
+from app import Board, decode, encode, rleReader
 
 class TestBoard:
   def test_Board_exists(self):
@@ -47,3 +47,9 @@ class TestEndoding:
     string = 'oo$bb'
     encoded = encode(string)
     assert encoded == '2o\n2b'
+
+class TestRLEReader:
+  def test_returns_x_and_Y():
+    x, y = rleReader('./testpattern.rle')
+    assert x == 3
+    assert y == 3

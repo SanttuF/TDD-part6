@@ -45,6 +45,9 @@ def encode(code):
 
   return output
 
+def rleReader(file):
+  return
+
 
 if __name__ == "__main__":
   # print(encode('oo$bb'))
