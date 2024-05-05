@@ -20,17 +20,24 @@ def decode(code):
   return output
 
 def encode(code):
+  if(len(code)) < 2:
+    return code
+
   output = ''
-  count = ''
-  prev = ''
-  for i in code:
+  count = 0
+  prev = code[0]
+  for i in code[1:]:
     if(i == prev):
       count += 1
       continue
-    output += count + prev
-    count = ''
-  output += count + prev
+    output += str(count) + prev
+    count = 1
+    prev = i
+  output += str(count) + prev
   return output
+
+def count(code):
+  return
     
 
 if __name__ == "__main__":

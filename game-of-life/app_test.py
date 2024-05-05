@@ -1,4 +1,4 @@
-from app import Board, decode, encode
+from app import Board, decode, encode, count
 
 class TestBoard:
   def test_Board_exists(self):
@@ -17,18 +17,23 @@ class TestBoard:
     assert len(board.board[0]) == 4
 
 class TestDecoding:
-  def testDecoding(self):
+  def test_Decoding(self):
     encoded = '2o2b'
     decoded = decode(encoded)
     assert decoded == 'oobb'
 
-  def testDecodingLinechange(self):
+  def test_Decoding_Linechange(self):
     encoded = '2o$2b'
     decoded = decode(encoded)
     assert decoded == 'oo\nbb'
 
-class testEndoding:
-  def testSimpleEncode(self):
-    string = 'oo'
-    encoded = encode(string)
-    assert encoded == '2o'
+class TestEndoding:
+  def test_counting():
+    r = count('aabbbc')
+    assert r == [('a', 2), ('b', 3), ('c', 1)]
+    
+
+  # def testSimpleEncode(self):
+  #   string = 'oo'
+  #   encoded = encode(string)
+  #   assert encoded == '2o'
