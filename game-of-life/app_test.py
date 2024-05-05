@@ -31,6 +31,11 @@ class TestBoard:
     pattern = pattern = board.setPattern('oo')
     assert pattern == ['oob']
 
+  def test_Board_pattern_parse_pads_dead_cells_y(self):
+    board = Board(1, 3)
+    pattern = pattern = board.setPattern('o$o')
+    assert pattern == ['o','o','b']
+
 class TestDecoding:
   def test_Decoding(self):
     encoded = '2o2b'
