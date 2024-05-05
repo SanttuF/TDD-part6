@@ -18,64 +18,69 @@ class Board:
 
     return split
 
-def decode(code):
-  output = ''
-  num = 1
-  for i in code:
-    if (i == '$'):
-      output += '\n'
-    elif(i.isnumeric()):
-      num = int(i)
-    else:
-      output += i * num
-      num = 1
-  return output
 
-def encode(code):
+class RLEFileHandler:
+  
+  @staticmethod
+  def decode(self, code):
+    output = ''
+    num = 1
+    for i in code:
+      if (i == '$'):
+        output += '\n'
+      elif(i.isnumeric()):
+        num = int(i)
+      else:
+        output += i * num
+        num = 1
+    return output
 
-  output = ''
-  count = 1
-  prev = ''
+  @staticmethod
+  def encode(self, code):
+    output = ''
+    count = 1
+    prev = ''
 
-  for i in code:
-    if(i == prev):
-      count += 1
-      continue
+    for i in code:
+      if(i == prev):
+        count += 1
+        continue
+
+      if count == 1: output += prev  
+      else:          output += str(count) + prev
+
+      prev = i
+      count = 1
+
+      if(i == '$'):
+        output += '\n'
+        prev = ''
 
     if count == 1: output += prev  
     else:          output += str(count) + prev
 
-    prev = i
-    count = 1
+    return output
 
-    if(i == '$'):
-      output += '\n'
-      prev = ''
+  @staticmethod
+  def rleReader(self, file):
+    x, y = 0,0
+    pattern = ''
+    f = False
+    with open(file, 'r') as rleFile:
+      for line in rleFile:
+        if (line[0] == '#'):
+          continue
 
-  if count == 1: output += prev  
-  else:          output += str(count) + prev
+        if(not f):
+          xi = line.find('x') + 4
+          yi = line.find('y') + 4
+          x = int(line[xi])
+          y = int(line[yi])
+          f = True
+          continue
 
-  return output
-
-def rleReader(file):
-  x, y = 0,0
-  pattern = ''
-  f = False
-  with open(file, 'r') as rleFile:
-    for line in rleFile:
-      if (line[0] == '#'):
-        continue
-
-      if(not f):
-        xi = line.find('x') + 4
-        yi = line.find('y') + 4
-        x = int(line[xi])
-        y = int(line[yi])
-        f = True
-        continue
-
-      pattern = line[:-1]
-  return (x, y, pattern)
+        pattern = line[:-1]
+    return (x, y, pattern)
 
 
 if __name__ == "__main__":

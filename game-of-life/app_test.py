@@ -1,4 +1,4 @@
-from app import Board, decode, encode, rleReader
+from app import Board, RLEFileHandler
 
 class TestBoard:
   def test_Board_exists(self):
@@ -37,43 +37,49 @@ class TestBoard:
     assert pattern == ['o','o','b']
 
 class TestDecoding:
+  decode = RLEFileHandler.decode
+
   def test_Decoding(self):
     encoded = '2o2b'
-    decoded = decode(encoded)
+    decoded = self.decode(encoded)
     assert decoded == 'oobb'
 
   def test_Decoding_Linechange(self):
     encoded = '2o$2b'
-    decoded = decode(encoded)
+    decoded = self.decode(encoded)
     assert decoded == 'oo\nbb'
 
-class TestEndoding:   
+class TestEndoding:
+  encode = RLEFileHandler.encode
+
   def test_Simple_Encode(self):
     string = 'oo'
-    encoded = encode(string)
+    encoded = self.encode(string)
     assert encoded == '2o'
   
   def test_Singular_Encode(self):
     string = 'o'
-    encoded = encode(string)
+    encoded = self.encode(string)
     assert encoded == 'o'
 
   def test_multiple_letters_Encode(self):
     string = 'ooooboo'
-    encoded = encode(string)
+    encoded = self.encode(string)
     assert encoded == '4ob2o'
 
   def test_linechange_Encode(self):
     string = 'oo$bb'
-    encoded = encode(string)
+    encoded = self.encode(string)
     assert encoded == '2o\n2b'
 
 class TestRLEReader:
+  rleReader = RLEFileHandler.rleReader
+
   def test_returns_x_and_Y(self):
-    x, y, _ = rleReader("testpattern.rle")
+    x, y, _ = self.rleReader("testpattern.rle")
     assert x == 3
     assert y == 3
 
   def test_returns_pattern(self):
-    _, _, pattern = rleReader("testpattern.rle")
+    _, _, pattern = self.rleReader("testpattern.rle")
     assert pattern == 'b2o$2ob$bo'
