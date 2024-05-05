@@ -17,6 +17,9 @@ class Board:
       split.append('b'*self.x)
 
     return split
+  
+  def __str__(self):
+    return '$'.join(self.board)
 
 
 class RLEFileHandler:

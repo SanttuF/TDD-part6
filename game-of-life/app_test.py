@@ -36,9 +36,9 @@ class TestBoard:
     pattern = pattern = board.setPattern('o$o')
     assert pattern == ['o','o','b']
 
-  def test_Board_toString(self):
+  def test_Board_to_string(self):
     board = Board(2, 2, 'oo$oo')
-    string = board.toString()
+    string = str(board)
     assert string == 'oo$oo'
 
 class TestDecoding:
