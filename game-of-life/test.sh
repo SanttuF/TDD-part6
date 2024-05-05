@@ -1,7 +1,8 @@
-output="$(python app.py testinput)"
+output="$(python app.py testpattern.rle)"
 
-if [ "$output" = "testinput" ]; then
+if [ "$output" = "b2o\$2ob\$bo!" ]; then
   echo "test passed"
 else
   echo "test failed"
+  echo "$output"
 fi
