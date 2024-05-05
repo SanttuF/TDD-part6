@@ -10,7 +10,9 @@ def decode(code):
   output = ''
   num = 1
   for i in code:
-    if(i.isnumeric()):
+    if (i == '$'):
+      output += '\n'
+    elif(i.isnumeric()):
       num = int(i)
     else:
       output += i * num
