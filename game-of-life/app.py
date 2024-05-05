@@ -8,6 +8,10 @@ class Board:
 
   def setPattern(self, pattern):
     split = pattern.split('$')
+    for i in range(len(split)):
+      if len(split[i]) < self.x:
+        split[i] += 'b' * (self.x - len(split[i]))
+
     return split
 
 def decode(code):
