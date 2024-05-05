@@ -42,5 +42,4 @@ def encode(code):
 
 
 if __name__ == "__main__":
-  # print(sys.argv[1])
-  encode('oooo')
+  print(sys.argv[1])
