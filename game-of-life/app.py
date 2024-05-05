@@ -86,14 +86,13 @@ class RLEFileHandler:
     return (x, y, pattern)
 
 
+def simulate(file):
+  (x, y, pattern) = RLEFileHandler.rleReader(file)
+  decoded = RLEFileHandler.decode(pattern)
+  board = Board(x, y, decoded)
+  encoded = RLEFileHandler.encode(str(board))
+  return encoded
+
 if __name__ == "__main__":
   file = sys.argv[1]
-  (x, y, pattern) = RLEFileHandler.rleReader(file)
-  # print('file', pattern, x, y)
-  decoded = RLEFileHandler.decode(pattern)
-  # print('decode', decoded)
-  board = Board(x, y, decoded)
-  # print(str(board))
-  encoded = RLEFileHandler.encode(str(board))
-  # print('encode', encoded)
-  print(encoded)
+  print(simulate(file))
