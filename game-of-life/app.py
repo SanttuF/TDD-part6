@@ -33,13 +33,12 @@ def encode(code):
     if count == 1: output += prev  
     else:          output += str(count) + prev
 
+    prev = i
+    count = 1
+
     if(i == '$'):
       output += '\n'
       prev = ''
-    else:
-      prev = i
-
-    count = 1
 
   if count == 1: output += prev  
   else:          output += str(count) + prev
