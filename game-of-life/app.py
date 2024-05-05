@@ -7,7 +7,8 @@ class Board:
     self.board = ['b'*x for _ in range(y)]
 
   def setPattern(self, pattern):
-    return [pattern]
+    split = pattern.split('$')
+    return split
 
 def decode(code):
   output = ''
