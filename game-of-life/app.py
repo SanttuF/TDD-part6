@@ -6,5 +6,8 @@ class Board:
     self.y = y
     self.board = [['.' for _ in range(x)] for _ in range(y)]
 
+def decode():
+  return
+
 if __name__ == "__main__":
   print(sys.argv[1])

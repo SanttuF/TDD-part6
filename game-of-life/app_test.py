@@ -1,4 +1,4 @@
-from app import Board
+from app import Board, decode
 
 class TestBoard:
   def test_Board_exists(self):
@@ -15,3 +15,8 @@ class TestBoard:
     assert board.board is not None
     assert len(board.board) == 5
     assert len(board.board[0]) == 4
+
+def testDecoding():
+  encoded = '2o2b'
+  decoded = decode(encoded)
+  assert decoded == 'oobb'
