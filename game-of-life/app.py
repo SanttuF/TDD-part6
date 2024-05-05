@@ -25,7 +25,7 @@ class Board:
 class RLEFileHandler:
   
   @staticmethod
-  def decode(self, code):
+  def decode(code):
     output = ''
     num = 1
     for i in code:
@@ -39,7 +39,7 @@ class RLEFileHandler:
     return output
 
   @staticmethod
-  def encode(self, code):
+  def encode(code):
     output = ''
     count = 1
     prev = ''
@@ -65,7 +65,7 @@ class RLEFileHandler:
     return output
 
   @staticmethod
-  def rleReader(self, file):
+  def rleReader(file):
     x, y = 0,0
     pattern = ''
     f = False
@@ -87,4 +87,9 @@ class RLEFileHandler:
 
 
 if __name__ == "__main__":
-  print(sys.argv[1])
+  file = sys.argv[1]
+  (x, y, pattern) = RLEFileHandler.rleReader(file)
+  decoded = RLEFileHandler.decode(pattern)
+  board = Board(x, y, pattern)
+  encoded = RLEFileHandler.encode(str(board))
+  print(encoded)
