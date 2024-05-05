@@ -20,3 +20,8 @@ def testDecoding():
   encoded = '2o2b'
   decoded = decode(encoded)
   assert decoded == 'oobb'
+
+def testDecodingLinechange():
+  encoded = '2o$2b'
+  decoded = decode(encoded)
+  assert decoded == 'oo\nbb'
