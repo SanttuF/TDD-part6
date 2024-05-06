@@ -41,6 +41,12 @@ class TestBoard:
     string = str(board)
     assert string == 'oo$oo'
 
+  def test_Board_generator_simple(self):
+    board = Board(3, 3, 'bbb$bob$bbb')
+    board.nextState()
+    assert str(board) == 'bbb$bbb$bbb'
+
+
 class TestDecoding:
   def test_Decoding(self):
     encoded = '2o2b'
@@ -51,6 +57,7 @@ class TestDecoding:
     encoded = '2o$2b'
     decoded = RLEFileHandler.decode(encoded)
     assert decoded == 'oo$bb'
+
 
 class TestEndoding:
   def test_Simple_Encode(self):
@@ -72,6 +79,7 @@ class TestEndoding:
     string = 'oo$bb'
     encoded = RLEFileHandler.encode(string)
     assert encoded == '2o$2b'
+
 
 class TestRLEReader:
   def test_returns_x_and_Y(self):

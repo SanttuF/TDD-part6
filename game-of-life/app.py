@@ -18,6 +18,9 @@ class Board:
 
     return split
   
+  def nextState():
+    return
+  
   def __str__(self):
     return '$'.join(self.board)
 
