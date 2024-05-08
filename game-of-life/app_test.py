@@ -72,6 +72,12 @@ class TestBoard:
     generated = Board.generate(board.board)
     assert generated == ['bbbbb', 'booob', 'bobbb', 'boobb', 'bbbbb']
 
+  def test_generator_moving_shape(self):
+    board = Board(3, 3, 'ooo$obb$oob')
+    generated = Board.generate(board.board)
+    assert generated == ['bbobb', 'boobb', 'obbob', 'boobb', 'bbbbb']
+
+
 class TestDecoding:
   def test_Decoding(self):
     encoded = '2o2b'
