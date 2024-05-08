@@ -60,7 +60,7 @@ class TestBoard:
   def test_generator(self):
     board = Board(3, 3, 'bbb$bob$bbb')
     generated = Board.generate(board.board)
-    assert generated == ['bbb', 'bbb', 'bbb']
+    assert generated == ['bbbbb', 'bbbbb', 'bbbbb', 'bbbbb', 'bbbbb']
 
 
 class TestDecoding:

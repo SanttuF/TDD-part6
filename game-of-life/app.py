@@ -21,28 +21,58 @@ class Board:
   def removeExtra(self):
     while(self.board[0] == 'b'*self.x):
       self.board.pop(0)
-      self.x -= 1
+      self.x -= len(self.board[0])
 
     while(self.board[-1] == 'b'*self.x):
       self.board.pop(-1)
-      self.x -= 1
+      self.x -= len(self.board[0])
 
     while(set([self.board[i][0] for i in range(len(self.board))]) == {'b'}):
       for i in range(self.y):
         self.board[i] = self.board[i][1:]
-        self.y -= 1
+        self.y -= len(self.board)
 
     while(set([self.board[i][-1] for i in range(len(self.board))]) == {'b'}):
       for i in range(self.y):
         self.board[i] = self.board[i][:-1]
-        self.y -= 1
+        self.y -= len(self.board)
   
   def __str__(self):
     return '$'.join(self.board)
   
   @staticmethod
   def generate(board):
-    return
+    newBoard = ['b'*(len(board[0]) + 2) for _ in range(len(board) + 2)]
+    helpBoard = board[:]
+    helpBoard.insert(0, 'b'*len(helpBoard[0]))
+    helpBoard.insert(-1, 'b'*len(helpBoard[0]))
+    helpBoard.insert(0, 'b'*len(helpBoard[0]))
+    helpBoard.insert(-1, 'b'*len(helpBoard[0]))
+
+    for i in range(len(helpBoard)):
+      helpBoard[i] = 'bb' + helpBoard[i] + 'bb'
+
+    for y, row  in enumerate(newBoard):
+      for x, cell in enumerate(newBoard):
+        neighbors = 0
+
+        for j in range(-1, 2):
+          for i in range(-1, 2):
+            if(helpBoard[y+1+j][x+1+i] == 'o'):
+              neighbors += 1
+      
+      if helpBoard[y+1][x+1] == 'b':
+        if(neighbors == 3):
+          newBoard[y][x] = 'o'
+      else:
+        if(neighbors < 2 or neighbors > 3):
+          newBoard[y][x] = 'b'
+        else:
+          newBoard[y][x] = 'o'
+
+    return newBoard
+  
+        
 
 
 class RLEFileHandler:
