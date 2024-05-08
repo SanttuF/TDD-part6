@@ -17,9 +17,8 @@ class Board:
       split.append('b'*self.x)
 
     return split
-  
-  def nextState():
-    return
+
+            
   
   def __str__(self):
     return '$'.join(self.board)
