@@ -19,26 +19,34 @@ class Board:
     return split
 
   def removeExtra(self):
-    while(self.board[0] == 'b'*self.x):
+    while(self.board[0] == 'b'*len(self.board)):
       self.board.pop(0)
       self.x -= len(self.board[0])
 
-    while(self.board[-1] == 'b'*self.x):
+    while(self.board[-1] == 'b'*len(self.board[0])):
       self.board.pop(-1)
       self.x -= len(self.board[0])
 
     while(set([self.board[i][0] for i in range(len(self.board))]) == {'b'}):
-      for i in range(self.y):
+      for i in range(len(self.board)):
         self.board[i] = self.board[i][1:]
         self.y -= len(self.board)
 
     while(set([self.board[i][-1] for i in range(len(self.board))]) == {'b'}):
-      for i in range(self.y):
+      for i in range(len(self.board)):
         self.board[i] = self.board[i][:-1]
         self.y -= len(self.board)
   
   def __str__(self):
     return '$'.join(self.board)
+  
+  def simulate(self, n):
+    for _ in range(n):
+      r = Board.generate(self.board)
+      self.board = r
+      self.x = len(self.board[0])
+      self.y = len(self.board)
+      self.removeExtra()
   
   @staticmethod
   def generate(board):
@@ -61,8 +69,6 @@ class Board:
             if(helpBoard[y+1+j][x+1+i] == 'o'):
               if not (j == 0 and i == 0):
                 neighbors += 1
-
-        print(x, y, helpBoard[y+1][x+1], neighbors)
       
         if helpBoard[y+1][x+1] == 'b':
           if(neighbors == 3):
@@ -74,8 +80,7 @@ class Board:
             newBoard[y] = newBoard[y][:x] + 'o' + newBoard[y][x+1:]
 
     return newBoard
-  
-        
+
 
 
 class RLEFileHandler:
@@ -142,7 +147,7 @@ class RLEFileHandler:
     return (x, y, pattern)
 
 
-def simulate(file):
+def run(file):
   (x, y, pattern) = RLEFileHandler.rleReader(file)
   decoded = RLEFileHandler.decode(pattern)
   board = Board(x, y, decoded)
@@ -151,7 +156,7 @@ def simulate(file):
 
 if __name__ == "__main__":
   file = sys.argv[1]
-  print(simulate(file))
+  print(run(file))
 
     # board = Board(3, 3, 'bbb$boo$boo')
     # generated = Board.generate(board.board)
