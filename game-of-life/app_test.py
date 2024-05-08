@@ -42,7 +42,7 @@ class TestBoard:
     assert string == 'oo$oo'
 
   def test_remove_extra_lines_x(self):
-    board = Board(3, 3, 'ooo', 'bbo', 'bbb')
+    board = Board(3, 3, 'ooo$bbo$bbb')
     board.removeExtra()
     assert str(board) == 'ooo$bbo'
 

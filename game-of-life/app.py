@@ -18,7 +18,14 @@ class Board:
 
     return split
 
-            
+  def removeExtra(self):
+    while(self.board[0] == 'b'*self.x):
+      self.board.pop(0)
+      self.x -= 1
+
+    while(self.board[-1] == 'b'*self.x):
+      self.board.pop(-1)
+      self.x -= 1
   
   def __str__(self):
     return '$'.join(self.board)
