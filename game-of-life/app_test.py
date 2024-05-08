@@ -62,6 +62,10 @@ class TestBoard:
     generated = Board.generate(board.board)
     assert generated == ['bbbbb', 'bbbbb', 'bbbbb', 'bbbbb', 'bbbbb']
 
+  def test_generator_more_complex(self):
+    board = Board(3, 3, 'bbb$boo$boo')
+    generated = Board.generate(board.board)
+    assert generated == ['bbbbb', 'bbbbb', 'bboob', 'bboob', 'bbbbb']
 
 class TestDecoding:
   def test_Decoding(self):

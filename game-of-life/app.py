@@ -45,9 +45,9 @@ class Board:
     newBoard = ['b'*(len(board[0]) + 2) for _ in range(len(board) + 2)]
     helpBoard = board[:]
     helpBoard.insert(0, 'b'*len(helpBoard[0]))
-    helpBoard.insert(-1, 'b'*len(helpBoard[0]))
+    helpBoard.append('b'*len(helpBoard[0]))
     helpBoard.insert(0, 'b'*len(helpBoard[0]))
-    helpBoard.insert(-1, 'b'*len(helpBoard[0]))
+    helpBoard.append('b'*len(helpBoard[0]))
 
     for i in range(len(helpBoard)):
       helpBoard[i] = 'bb' + helpBoard[i] + 'bb'
@@ -59,16 +59,19 @@ class Board:
         for j in range(-1, 2):
           for i in range(-1, 2):
             if(helpBoard[y+1+j][x+1+i] == 'o'):
-              neighbors += 1
+              if not (j == 0 and i == 0):
+                neighbors += 1
+
+        print(x, y, helpBoard[y+1][x+1], neighbors)
       
-      if helpBoard[y+1][x+1] == 'b':
-        if(neighbors == 3):
-          newBoard[y][x] = 'o'
-      else:
-        if(neighbors < 2 or neighbors > 3):
-          newBoard[y][x] = 'b'
+        if helpBoard[y+1][x+1] == 'b':
+          if(neighbors == 3):
+            newBoard[y] = newBoard[y][:x] + 'o' + newBoard[y][x+1:]
         else:
-          newBoard[y][x] = 'o'
+          if(neighbors < 2 or neighbors > 3):
+            newBoard[y] = newBoard[y][:x] + 'b' + newBoard[y][x+1:]
+          else:
+            newBoard[y] = newBoard[y][:x] + 'o' + newBoard[y][x+1:]
 
     return newBoard
   
@@ -149,3 +152,7 @@ def simulate(file):
 if __name__ == "__main__":
   file = sys.argv[1]
   print(simulate(file))
+
+    # board = Board(3, 3, 'bbb$boo$boo')
+    # generated = Board.generate(board.board)
+    # print(generated)
