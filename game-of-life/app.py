@@ -26,6 +26,16 @@ class Board:
     while(self.board[-1] == 'b'*self.x):
       self.board.pop(-1)
       self.x -= 1
+
+    while(set([self.board[i][0] for i in range(len(self.board))]) == {'b'}):
+      for i in range(self.y):
+        self.board[i] = self.board[i][1:]
+        self.y -= 1
+
+    while(set([self.board[i][-1] for i in range(len(self.board))]) == {'b'}):
+      for i in range(self.y):
+        self.board[i] = self.board[i][:-1]
+        self.y -= 1
   
   def __str__(self):
     return '$'.join(self.board)
