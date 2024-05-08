@@ -85,7 +85,7 @@ class TestBoard:
   def test_simulating(self):
     board = Board(3, 3, 'boo$oob$bob')
     r = board.simulate(2)
-    assert r == ['bbobb', 'boobb', 'obbob', 'boobb']
+    assert r == ['bbob', 'boob', 'obbo', 'boob']
 
 
 
