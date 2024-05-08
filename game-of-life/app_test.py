@@ -76,6 +76,17 @@ class TestBoard:
     board = Board(3, 3, 'ooo$obb$oob')
     generated = Board.generate(board.board)
     assert generated == ['bbobb', 'boobb', 'obbob', 'boobb', 'bbbbb']
+  
+  def test_generator_bigger_size(self):
+    board = Board(4, 4, 'bbbb$oobb$oobb$bbbb')
+    generated = Board.generate(board.board)
+    assert generated == ['bbbbbb', 'bbbbbb', 'boobbb', 'boobbb', 'bbbbbb', 'bbbbbb']
+
+  def test_simulating(self):
+    board = Board(3, 3, 'boo$oob$bob')
+    r = board.simulate(2)
+    assert r == ['bbobb', 'boobb', 'obbob', 'boobb']
+
 
 
 class TestDecoding:
