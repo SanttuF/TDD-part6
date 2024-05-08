@@ -53,9 +53,14 @@ class TestBoard:
     assert str(board) == 'oo$bo$ob'
 
   def test_remove_extra_lines_y(self):
-      board = Board(3, 3, 'oob$bbb$bob')
-      board.removeExtra()
-      assert str(board) == 'oo$bb$bo'
+    board = Board(3, 3, 'oob$bbb$bob')
+    board.removeExtra()
+    assert str(board) == 'oo$bb$bo'
+
+  def test_generator(self):
+    board = Board(3, 3, 'bbb$bob$bbb')
+    generated = Board.generate(board.board)
+    assert generated == ['bbb', 'bbb', 'bbb']
 
 
 class TestDecoding:

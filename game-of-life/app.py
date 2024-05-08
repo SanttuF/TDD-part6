@@ -39,6 +39,10 @@ class Board:
   
   def __str__(self):
     return '$'.join(self.board)
+  
+  @staticmethod
+  def generate(board):
+    return
 
 
 class RLEFileHandler:
