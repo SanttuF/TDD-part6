@@ -41,10 +41,10 @@ class TestBoard:
     string = str(board)
     assert string == 'oo$oo'
 
-  def test_Board_generator_simple(self):
-    board = Board(3, 3, 'bbb$bob$bbb')
-    board.nextState()
-    assert str(board) == 'bbb$bbb$bbb'
+  def test_remove_extra_lines_x(self):
+    board = Board(3, 3, 'ooo', 'bbo', 'bbb')
+    board.removeExtra()
+    assert str(board) == 'ooo$bbo'
 
 
 class TestDecoding:
