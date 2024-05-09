@@ -92,6 +92,12 @@ class TestBoard:
     board.simulate(4)
     assert str(board) == 'bob$bbo$ooo'
 
+  def test_simulating_complex(self):
+    board = Board(7, 6, 'bbbbboo$bbbbobo$bbbobbb$bbobbbb$bobbbbb$obbbbbb')
+    board.simulate(10)
+    assert str(board) == 'oo$oo'
+
+
 class TestDecoding:
   def test_Decoding(self):
     encoded = '2o2b'
