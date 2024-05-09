@@ -158,6 +158,3 @@ def run(file, n):
 if __name__ == "__main__":
   file, n = sys.argv[1], int(sys.argv[2])
   print(run(file, n))
-
-    # board = Board(3, 3, 'boo$oob$bob')
-    # board.simulate(8)

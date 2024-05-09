@@ -140,4 +140,4 @@ class TestRLEReader:
 
   def test_returns_pattern(self):
     _, _, pattern = RLEFileHandler.rleReader("testpattern.rle")
-    assert pattern == 'b2o$2ob$bo'
+    assert pattern == 'bob$2bo$3o'
