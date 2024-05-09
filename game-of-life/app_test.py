@@ -87,6 +87,10 @@ class TestBoard:
     board.simulate(2)
     assert str(board) == 'bbob$boob$obbo$boob'
 
+  def test_simulating_complex(self):
+    board = Board(3, 3, 'boo$oob$bob')
+    board.simulate(2)
+    assert str(board) == 'bbob$boob$obbo$boob'
 
 class TestDecoding:
   def test_Decoding(self):
