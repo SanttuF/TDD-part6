@@ -61,7 +61,7 @@ class Board:
       helpBoard[i] = 'bb' + helpBoard[i] + 'bb'
 
     for y, row  in enumerate(newBoard):
-      for x, cell in enumerate(newBoard):
+      for x, cell in enumerate(row):
         neighbors = 0
 
         for j in range(-1, 2):
