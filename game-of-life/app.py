@@ -123,6 +123,7 @@ class RLEFileHandler:
     if count == 1: output += prev  
     else:          output += str(count) + prev
 
+    output += '!'
     return output
 
   @staticmethod
