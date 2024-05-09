@@ -19,11 +19,11 @@ class Board:
     return split
 
   def removeExtra(self):
-    while(self.board[0] == 'b'*len(self.board)):
+    while(self.board[0] == 'b'*len(self.board[0])):
       self.board.pop(0)
       self.x -= len(self.board[0])
 
-    while(self.board[-1] == 'b'*len(self.board[0])):
+    while(self.board[-1] == 'b'*len(self.board[-1])):
       self.board.pop(-1)
       self.x -= len(self.board[0])
 
